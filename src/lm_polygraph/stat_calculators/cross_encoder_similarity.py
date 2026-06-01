@@ -29,11 +29,13 @@ class CrossEncoderSimilarityMatrixCalculator(StatCalculator):
         self,
         batch_size: int = 10,
         cross_encoder_name: str = "cross-encoder/stsb-roberta-large",
+        device: str = "cuda",
     ):
         super().__init__()
         self.crossencoder_setup = False
         self.batch_size = batch_size
         self.cross_encoder_name = cross_encoder_name
+        self.device = device
 
     def _setup(self, device="cuda"):
         self.crossencoder = CrossEncoder(self.cross_encoder_name, device=device)
